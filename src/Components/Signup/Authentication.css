@@ -1,0 +1,10 @@
+.signup-main {
+  /* background: url(../../assets/images/walletimg.avif); */
+  background-color: #c4e1d8;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+}
