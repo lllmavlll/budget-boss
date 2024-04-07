@@ -7,7 +7,7 @@ const UserRoute = ({ children }) => {
 
   const { user } = UserAuth()
   // const user = 'mahesh'
-  if (!user) {
+  if (user) {
     return <Navigate to='/' replace={true} />
   }
   return children;

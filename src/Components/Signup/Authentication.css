@@ -1,8 +1,14 @@
+:root {
+  ---mainColor: #c4e1d8;
+  ---mainColor2: #6bbdad;
+
+}
+
 .signup-main {
   /* background: url(../../assets/images/walletimg.avif); */
-  background-color: #c4e1d8;
-  width: 100%;
+  /* background-color: var(---mainColor); */
   height: 100%;
+  width: 100%;
   background-repeat: no-repeat;
   object-fit: cover;
   background-position: center;

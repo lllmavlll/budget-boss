@@ -1,8 +1,15 @@
 import React from 'react'
+import Header from './Header/Header'
+import Footer from './Footer/Footer'
+import ViewExpenses from './Body/ViewExpenses'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <Header />
+      <ViewExpenses />
+      <Footer />
+    </>
   )
 }
 

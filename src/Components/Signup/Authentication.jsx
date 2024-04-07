@@ -3,7 +3,7 @@ import { UserAuth } from '../../auth/AuthContext'
 import { Form, Button } from 'react-bootstrap'
 import { Toaster, toast } from 'sonner'
 import wallet from '../../assets/images/digiWallet.webp'
-import Card from '../UI elements/Card'
+import Card from '../UI elements/Card/Card'
 import './Authentication.css'
 
 const Authentication = () => {
@@ -32,7 +32,7 @@ const Authentication = () => {
     e.preventDefault()
     const { email, password } = inputValue
 
-    const loadingToast = toast.loading('Loadin...!')
+    const loadingToast = toast.loading('Loading...!')
     try {
       await userLogin(email, password)
       toast.success('logged in succesfully')
@@ -50,20 +50,20 @@ const Authentication = () => {
     e.preventDefault()
     const { email, password, confirmPassword } = inputValue
 
-    const loadingToast = toast.loading('Loadin...!')
-    try {
-      if (confirmPassword !== password) {
-        return toast.warning('Password dosent match')
+    if (confirmPassword !== password) {
+      toast.warning('Password dosen\'t match')
+    }
+    else {
+      const loadingToast = toast.loading('Loadingg...!')
+      try {
+        await createUser(email, password)
+        toast.success('Account created succesfully')
+        toast.dismiss(loadingToast)
+
+      } catch (error) {
+        toast.error(String(error.code).split("/")[1].replaceAll("-", " "))
+        toast.dismiss(loadingToast)
       }
-
-      await createUser(email, password)
-      toast.success('logged in succesfully')
-      toast.dismiss(loadingToast)
-
-    } catch (error) {
-      toast.error(String(error.code).split("/")[1].replaceAll("-", " "))
-      toast.dismiss(loadingToast)
-
     }
 
   }
@@ -71,7 +71,7 @@ const Authentication = () => {
     <>
       <div className='d-flex justify-content-center align-items-center signup-main' style={{ height: '100vh' }} >
         <Card size={3}>
-          <h2 className="mb-4">Budget Boss</h2>
+          <h2 className="mb-4">Budget<span className='text-primary'>Boss</span></h2>
           <div className='sign-up-form-div'>
             {loginView ?
               (
@@ -100,7 +100,7 @@ const Authentication = () => {
                     Login
                   </Button>
                   <Form.Text className='mx-3'>
-                    new here? signup <span onClick={() => setLoginView(false)} className='text-primary cursor-pointer'>here</span>
+                    new here? signup <span onClick={() => setLoginView(false)} style={{ cursor: 'pointer' }} className='text-primary cursor-pointer'>here</span>
                   </Form.Text>
                 </Form>
               )
@@ -142,17 +142,13 @@ const Authentication = () => {
                     signup
                   </Button>
                   <Form.Text className='mx-3'>
-                    already have an account? login <span onClick={() => setLoginView(true)} className='text-primary cursor-pointer'>here</span>
+                    already have an account? login <span onClick={() => setLoginView(true)} className='text-primary' style={{ cursor: 'pointer' }}>here</span>
                   </Form.Text>
                 </Form>
               )}
-
-            <div className='signup-form-image max-w-100'>
-              {/* <img src={wallet} alt='logo' /> */}
-            </div>
           </div>
         </Card>
-      </div>
+      </div >
       <Toaster richColors position='bottom-right' />
     </>
 

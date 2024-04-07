@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-md/icon": "^5.1.6",
     "bootstrap": "^5.3.3",
     "firebase": "^10.10.0",
     "mdbreact": "^5.2.0",
